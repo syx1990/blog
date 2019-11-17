@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        SSH免密登录 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <!-- <div class="avatar ">
+            <img src="/" />
+        </div> -->
+        <div class="name">
+            <i>yuxiangShi</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是ssh？"><span class="toc-text">什么是ssh？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何快速的配置ssh免密登录"><span class="toc-text">如何快速的配置ssh免密登录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置ssh分三步走"><span class="toc-text">配置ssh分三步走</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        SSH免密登录
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-11-17 22:59:04</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#工具 ssh" title="工具 ssh">工具 ssh</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="什么是ssh？"><a href="#什么是ssh？" class="headerlink" title="什么是ssh？"></a>什么是ssh？</h2><p>SSH 为 <a href="https://baike.baidu.com/item/Secure%20Shell" target="_blank" rel="noopener">Secure Shell</a> 的缩写，由 IETF 的网络小组（Network Working Group）所制定；SSH 为建立在应用层基础上的安全协议。SSH 是目前较可靠，专为 <a href="https://baike.baidu.com/item/%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/1071998" target="_blank" rel="noopener">远程登录</a> 会话和其他网络服务提供安全性的协议。</p>
+<h2 id="如何快速的配置ssh免密登录"><a href="#如何快速的配置ssh免密登录" class="headerlink" title="如何快速的配置ssh免密登录"></a>如何快速的配置ssh免密登录</h2><h3 id="配置ssh分三步走"><a href="#配置ssh分三步走" class="headerlink" title="配置ssh分三步走"></a>配置ssh分三步走</h3><ol>
+<li>在本地创建公私钥<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa <span class="comment">#加密方式选 rsa|dsa均可以，默认dsa</span></span><br><span class="line">-t <span class="comment">#The type of the key to generate 密钥的类型</span></span><br><span class="line">-C <span class="comment">#comment to identify the key 用于识别这个密钥的注释 </span></span><br><span class="line"></span><br><span class="line">$ ssh-keygen -t rsa  <span class="comment">#加密方式选 rsa|dsa均可以，默认dsa -t The type of the key to generate 密钥的类型 -C comment to identify the key 用于识别这个密钥的注释</span></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file *<span class="keyword">in</span>* <span class="built_in">which</span> to save the key (/c/Users/Administrator/.ssh/id_rsa):</span><br><span class="line">Enter passphrase (empty *<span class="keyword">for</span>* no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved *<span class="keyword">in</span>* /c/Users/Administrator/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved *<span class="keyword">in</span>* /c/Users/Administrator/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:gygJuDyfHDsL3n7HoNxXKNrjelXTKjQ1FgvXBVuoR/g geek@PC-20190414MTRE</span><br><span class="line">The key<span class="string">'s randomart image is:</span></span><br><span class="line"><span class="string">+---[RSA 2048]----+</span></span><br><span class="line"><span class="string">|       . o+.+o   |</span></span><br><span class="line"><span class="string">|.       o=.+o    |</span></span><br><span class="line"><span class="string">|o       o.*.     |</span></span><br><span class="line"><span class="string">|.o . . + + E     |</span></span><br><span class="line"><span class="string">|.oo.. o S +      |</span></span><br><span class="line"><span class="string">|  +.+o + +       |</span></span><br><span class="line"><span class="string">| ..*= = o        |</span></span><br><span class="line"><span class="string">|. o+o* +         |</span></span><br><span class="line"><span class="string">| ..==.+          |</span></span><br><span class="line"><span class="string">+----[SHA256]-----+</span></span><br></pre></td></tr></table></figure></li>
+<li>用ssh-copy-id 将公钥复制或传输到远程服务器,并将身份标识文件追加到服务器的<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-copy-id -i ~/.ssh/yuxiangServer.pub usaename@ip</span><br><span class="line">/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: </span><br><span class="line"><span class="string">"/c/Users/Administrator/.ssh/id_rsa.pub"</span></span><br><span class="line">/usr/bin/ssh-copy-id: INFO: attempting to <span class="built_in">log</span> *<span class="keyword">in</span>* with the new key(s), to filter </span><br><span class="line">out any that are already installed</span><br><span class="line">/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- *<span class="keyword">if</span>* you are prompted </span><br><span class="line">now it is to install the new keys</span><br><span class="line">yuxiangshi@119.23.78.131<span class="string">'s password:</span></span><br><span class="line"><span class="string">Number of key(s) added: 1</span></span><br><span class="line"><span class="string">Now try logging into the machine, with:   "ssh '</span>yuxiangshi@119.23.78.131<span class="string">'"</span></span><br><span class="line"><span class="string">and check to make sure that only the key(s) you wanted were added.</span></span><br></pre></td></tr></table></figure></li>
+<li>配置本机ssh config文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host yuxiangServer</span><br><span class="line">      HostName 119.23.78.131</span><br><span class="line">      User yuxiangshi</span><br><span class="line">      Port 22</span><br><span class="line">      PubkeyAuthentication yes </span><br><span class="line">      IdentityFile ~/.ssh</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>修改服务器 /etc/ssh/sshd_config,并重启sshd服务<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RSAAuthentication yes </span><br><span class="line">PubkeyAuthentication yes </span><br><span class="line">AuthorizedKeysFile      ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+愉快的玩耍吧。</li>
+</ul>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
