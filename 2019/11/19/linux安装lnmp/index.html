@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        linux安装lnmp - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <!-- <div class="avatar ">
+            <img src="/" />
+        </div> -->
+        <div class="name">
+            <i>yuxiangShi</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装nginx"><span class="toc-text">安装nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装MYSQL"><span class="toc-text">安装MYSQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#更新yum源"><span class="toc-text">更新yum源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开启mysql"><span class="toc-text">开启mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看mysql的root账号的密码"><span class="toc-text">查看mysql的root账号的密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登录mysql"><span class="toc-text">登录mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改密码"><span class="toc-text">修改密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改root用户可远程登录"><span class="toc-text">修改root用户可远程登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#刷新"><span class="toc-text">刷新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql安全策略"><span class="toc-text">mysql安全策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看现在的密码策略："><span class="toc-text">查看现在的密码策略：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更改密码策略，降低密码的验证标准"><span class="toc-text">更改密码策略，降低密码的验证标准</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#更改密码策略为LOW"><span class="toc-text">更改密码策略为LOW</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改密码长度"><span class="toc-text">更改密码长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#密码最小长度为4"><span class="toc-text">密码最小长度为4</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装php"><span class="toc-text">安装php</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装yum源"><span class="toc-text">安装yum源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看"><span class="toc-text">查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装php以及扩展"><span class="toc-text">安装php以及扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开启服务"><span class="toc-text">开启服务</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        linux安装lnmp
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-11-19 00:54:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#PHP" title="PHP">PHP</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#nginx" title="nginx">nginx</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#MySQL" title="MySQL">MySQL</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install nginx</span><br><span class="line"><span class="comment"># 开启nginx</span></span><br><span class="line">service nginx start</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装MYSQL"><a href="#安装MYSQL" class="headerlink" title="安装MYSQL"></a>安装MYSQL</h2><h3 id="更新yum源"><a href="#更新yum源" class="headerlink" title="更新yum源"></a>更新yum源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum localinstall http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm</span><br><span class="line"></span><br><span class="line">yum install mysql-community-server</span><br></pre></td></tr></table></figure>
+<h3 id="开启mysql"><a href="#开启mysql" class="headerlink" title="开启mysql"></a>开启mysql</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld start</span><br></pre></td></tr></table></figure>
+<h3 id="查看mysql的root账号的密码"><a href="#查看mysql的root账号的密码" class="headerlink" title="查看mysql的root账号的密码"></a>查看mysql的root账号的密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">'temporary password'</span> /var/<span class="built_in">log</span>/mysqld.log</span><br></pre></td></tr></table></figure>
+<h3 id="登录mysql"><a href="#登录mysql" class="headerlink" title="登录mysql"></a>登录mysql</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
+<h3 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER <span class="string">'root'</span>@<span class="string">'localhost'</span> IDENTIFIED BY <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="修改root用户可远程登录"><a href="#修改root用户可远程登录" class="headerlink" title="修改root用户可远程登录"></a>修改root用户可远程登录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 有问题</span></span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO <span class="string">'root'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'password'</span> WITH GRANT OPTION;</span><br></pre></td></tr></table></figure>
+<h3 id="刷新"><a href="#刷新" class="headerlink" title="刷新"></a>刷新</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<h2 id="mysql安全策略"><a href="#mysql安全策略" class="headerlink" title="mysql安全策略"></a>mysql安全策略</h2><h3 id="查看现在的密码策略："><a href="#查看现在的密码策略：" class="headerlink" title="查看现在的密码策略："></a>查看现在的密码策略：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like <span class="string">'validate_password%'</span>;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>validate_password_number_count参数是密码中至少含有的数字个数，当密码策略是MEDIUM或以上时生效。</p>
+<p>validate_password_special_char_count参数是密码中非英文数字等特殊字符的个数，当密码策略是MEDIUM或以上时生效。</p>
+<p>validate_password_mixed_case_count参数是密码中英文字符大小写的个数，当密码策略是MEDIUM或以上时生效。</p>
+<p>validate_password_length参数是密码的长度，这个参数由下面的公式生成</p>
+<p>validate_password_number_count+ validate_password_special_char_count+ (2 * validate_password_mixed_case_count)</p>
+<p>validate_password_dictionary_file参数是指定密码验证的字典文件路径。</p>
+<p>validate_password_policy这个参数可以设为0、1、2，分别代表从低到高的密码强度，此参数的默认值为1，如果想将密码强度改弱，则更改此参数为0。</p>
+<hr>
+<h2 id="更改密码策略，降低密码的验证标准"><a href="#更改密码策略，降低密码的验证标准" class="headerlink" title="更改密码策略，降低密码的验证标准"></a>更改密码策略，降低密码的验证标准</h2><h3 id="更改密码策略为LOW"><a href="#更改密码策略为LOW" class="headerlink" title="更改密码策略为LOW"></a>更改密码策略为LOW</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> global validate_password_policy=0;</span><br></pre></td></tr></table></figure>
+<h3 id="更改密码长度"><a href="#更改密码长度" class="headerlink" title="更改密码长度"></a>更改密码长度</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> global validate_password_length=0;</span><br></pre></td></tr></table></figure>
+<h3 id="密码最小长度为4"><a href="#密码最小长度为4" class="headerlink" title="密码最小长度为4"></a>密码最小长度为4</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW VARIABLES LIKE <span class="string">'validate_password%'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="安装php"><a href="#安装php" class="headerlink" title="安装php"></a>安装php</h2><h3 id="安装yum源"><a href="#安装yum源" class="headerlink" title="安装yum源"></a>安装yum源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line"></span><br><span class="line">rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm</span><br></pre></td></tr></table></figure>
+<h3 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum search php71w</span><br></pre></td></tr></table></figure>
+<h3 id="安装php以及扩展"><a href="#安装php以及扩展" class="headerlink" title="安装php以及扩展"></a>安装php以及扩展</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install php71w php71w-fpm php71w-cli php71w-common php71w-devel php71w-gd php71w-pdo php71w-mysql php71w-mbstring php71w-bcmath</span><br></pre></td></tr></table></figure>
+<h3 id="开启服务"><a href="#开启服务" class="headerlink" title="开启服务"></a>开启服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service php-fpm start</span><br></pre></td></tr></table></figure>
+
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
