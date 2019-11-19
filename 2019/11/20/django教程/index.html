@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        django教程 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <!-- <div class="avatar ">
+            <img src="/" />
+        </div> -->
+        <div class="name">
+            <i>yuxiangShi</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#查看当前python所依赖的包"><span class="toc-text">查看当前python所依赖的包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建独立环境"><span class="toc-text">创建独立环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开启独立环境"><span class="toc-text">开启独立环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装django"><span class="toc-text">安装django</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建并启动"><span class="toc-text">创建并启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看目录结构"><span class="toc-text">查看目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建app"><span class="toc-text">创建app</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#app目录结构"><span class="toc-text">app目录结构</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        django教程
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-11-20 00:12:58</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#django" title="django">django</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="查看当前python所依赖的包"><a href="#查看当前python所依赖的包" class="headerlink" title="查看当前python所依赖的包"></a>查看当前python所依赖的包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">╰$ pip list</span><br><span class="line">Package           Version</span><br><span class="line">----------------- -------</span><br><span class="line">pbr               5.4.3</span><br><span class="line">pip               19.3.1</span><br><span class="line">pytz              2019.3</span><br><span class="line">setuptools        39.2.0</span><br><span class="line">six               1.12.0</span><br><span class="line">sqlparse          0.3.0</span><br><span class="line">stevedore         1.31.0</span><br><span class="line">virtualenv        16.7.6</span><br><span class="line">virtualenv-clone  0.5.3</span><br><span class="line">virtualenvwrapper 4.8.4</span><br><span class="line">wheel             0.31.1</span><br></pre></td></tr></table></figure>
+<h2 id="创建独立环境"><a href="#创建独立环境" class="headerlink" title="创建独立环境"></a>创建独立环境</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">╰$ virtualenv <span class="built_in">test</span></span><br><span class="line">Using base prefix <span class="string">'/usr/local/Cellar/python/3.6.5_1/Frameworks/Python.framework/Versions/3.6'</span></span><br><span class="line">New python executable <span class="keyword">in</span> /Users/shiyuxiang/develop/python/<span class="built_in">test</span>/bin/python3.6</span><br><span class="line">Also creating executable <span class="keyword">in</span> /Users/shiyuxiang/develop/python/<span class="built_in">test</span>/bin/python</span><br><span class="line">Installing setuptools, pip, wheel...</span><br><span class="line"><span class="keyword">done</span>.</span><br></pre></td></tr></table></figure>
+<h2 id="开启独立环境"><a href="#开启独立环境" class="headerlink" title="开启独立环境"></a>开启独立环境</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">╭─shiyuxiang@localhost <span class="keyword">in</span> ~/develop/python</span><br><span class="line">╰$ ls</span><br><span class="line">Myblog   blog     <span class="built_in">test</span>     tutorial</span><br><span class="line">╭─shiyuxiang@localhost <span class="keyword">in</span> ~/develop/python</span><br><span class="line">╰$ <span class="built_in">cd</span> <span class="built_in">test</span></span><br><span class="line">╭─shiyuxiang@localhost <span class="keyword">in</span> ~/develop/python/<span class="built_in">test</span></span><br><span class="line">╰$ ls</span><br><span class="line">bin     include lib</span><br><span class="line">╭─shiyuxiang@localhost <span class="keyword">in</span> ~/develop/python/<span class="built_in">test</span></span><br><span class="line">╰$ <span class="built_in">source</span> bin/activate</span><br><span class="line">(<span class="built_in">test</span>) ╭─shiyuxiang@localhost <span class="keyword">in</span> ~/develop/python/<span class="built_in">test</span></span><br><span class="line">╰$</span><br></pre></td></tr></table></figure>
+<h2 id="安装django"><a href="#安装django" class="headerlink" title="安装django"></a>安装django</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="built_in">test</span>) ╭─shiyuxiang@localhost <span class="keyword">in</span> ~/develop/python/<span class="built_in">test</span></span><br><span class="line">╰$ pip install django==1.11.7</span><br><span class="line">Collecting django==1.11.7</span><br><span class="line">  Using cached https://files.pythonhosted.org/packages/15/d8/b17afdcd527026d2f1acd30ac33406e6b22c0f573a3c14b2d9e0bd7df945/Django-1.11.7-py2.py3-none-any.whl</span><br><span class="line">Collecting pytz</span><br><span class="line">  Using cached https://files.pythonhosted.org/packages/e7/f9/f0b53f88060247251bf481fa6ea62cd0d25bf1b11a87888e53ce5b7c8ad2/pytz-2019.3-py2.py3-none-any.whl</span><br><span class="line">Installing collected packages: pytz, django</span><br><span class="line">Successfully installed django-1.11.7 pytz-2019.3</span><br></pre></td></tr></table></figure>
+<h2 id="创建并启动"><a href="#创建并启动" class="headerlink" title="创建并启动"></a>创建并启动</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">创建</span><br><span class="line">django-admin startproject mysite</span><br><span class="line"></span><br><span class="line">运行</span><br><span class="line">python manage.py runserver 127.0.0.1:8001</span><br><span class="line"></span><br><span class="line">浏览器访问：</span><br><span class="line">http://127.0.0.1:8001</span><br></pre></td></tr></table></figure>
+<h2 id="查看目录结构"><a href="#查看目录结构" class="headerlink" title="查看目录结构"></a>查看目录结构</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysite　　　　<span class="comment">#目录</span></span><br><span class="line">　- mysite      <span class="comment"># 对整个程序进行配置</span></span><br><span class="line">　　- init</span><br><span class="line">　　- settings  <span class="comment"># 配置文件</span></span><br><span class="line">　　- urls       <span class="comment"># URL对应关系</span></span><br><span class="line">　　- wsgi      <span class="comment"># 遵循WSIG规范，uwsgi + nginx</span></span><br><span class="line"> - manage.py     <span class="comment"># 管理Django程序：</span></span><br></pre></td></tr></table></figure>
+<h2 id="创建app"><a href="#创建app" class="headerlink" title="创建app"></a>创建app</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py startapp cmdb     --&gt;Terminal里面运行</span><br></pre></td></tr></table></figure>
+<h2 id="app目录结构"><a href="#app目录结构" class="headerlink" title="app目录结构"></a>app目录结构</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 目录结构</span></span><br><span class="line">- cmdb</span><br><span class="line">    - migrations　　<span class="comment">#数据库操作记录（只是修改表结构的记录）</span></span><br><span class="line">    - init　　　　　　<span class="comment">#表示python数据包（python3中有无均可）</span></span><br><span class="line">    - admin　　　　　　<span class="comment">#Django为我们提供的后台管理</span></span><br><span class="line">    - apps　　　　　　<span class="comment">#配置当前app</span></span><br><span class="line">    - models　　　　　<span class="comment">#创建数据库表结构，写指定的类，通过命令可以创建数据库结构</span></span><br><span class="line">    - tests　　　　　　<span class="comment">#单元测试</span></span><br><span class="line">    - views　　　　　　<span class="comment">#写业务逻辑代码，最重要的就是这个文件了</span></span><br></pre></td></tr></table></figure>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

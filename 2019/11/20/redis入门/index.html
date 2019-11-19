@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        redis入门 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <!-- <div class="avatar ">
+            <img src="/" />
+        </div> -->
+        <div class="name">
+            <i>yuxiangShi</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis"><span class="toc-text">Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis介绍"><span class="toc-text">Redis介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Nosql-基本概念"><span class="toc-text">Nosql 基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Nosql-分类"><span class="toc-text">Nosql 分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis-基本概念"><span class="toc-text">Redis 基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#发展历史"><span class="toc-text">发展历史</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#应用场景"><span class="toc-text">应用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-安装"><span class="toc-text">Redis 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#下载"><span class="toc-text">下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis-启动"><span class="toc-text">redis 启动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#前端启动"><span class="toc-text">前端启动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后端启动"><span class="toc-text">后端启动</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-客户端"><span class="toc-text">Redis 客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#自带客户端"><span class="toc-text">自带客户端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#图形界面客户端"><span class="toc-text">图形界面客户端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jedis-客户端"><span class="toc-text">jedis 客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#工程搭建"><span class="toc-text">工程搭建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#单例连接redis"><span class="toc-text">单例连接redis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用连接池连接-redis"><span class="toc-text">使用连接池连接 redis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-整合-jedisPool"><span class="toc-text">Spring 整合 jedisPool</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据类型"><span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#String-类型"><span class="toc-text">String 类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hash-散列类型"><span class="toc-text">Hash 散列类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用-string-的问题"><span class="toc-text">使用 string 的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#介绍-1"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#命令"><span class="toc-text">命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#List-类型"><span class="toc-text">List 类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ArrayList-和-LinkedList-的区别"><span class="toc-text">ArrayList 和 LinkedList 的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#命令-1"><span class="toc-text">命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Set-类型"><span class="toc-text">Set 类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#命令-2"><span class="toc-text">命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运算命令"><span class="toc-text">运算命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sortedset-类型"><span class="toc-text">Sortedset 类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#命令-3"><span class="toc-text">命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#增加元素"><span class="toc-text">增加元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取元素分数"><span class="toc-text">获取元素分数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获得排名在某个范围的元素列表"><span class="toc-text">获得排名在某个范围的元素列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取元素的排名"><span class="toc-text">获取元素的排名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获得指定分数范围的元素"><span class="toc-text">获得指定分数范围的元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#增加某个元素的分数"><span class="toc-text">增加某个元素的分数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获得集合中元素的数量"><span class="toc-text">获得集合中元素的数量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获得指定分数范围内的元素个数"><span class="toc-text">获得指定分数范围内的元素个数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#按照排名范围删除元素"><span class="toc-text">按照排名范围删除元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#按照分数范围删除元素"><span class="toc-text">按照分数范围删除元素</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用"><span class="toc-text">应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#商品销售排行榜"><span class="toc-text">商品销售排行榜</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keys-命令"><span class="toc-text">keys 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用命令"><span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置-key-的生存时间"><span class="toc-text">设置 key 的生存时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-持久化方案"><span class="toc-text">Redis 持久化方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Rdb-方式"><span class="toc-text">Rdb 方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置持久化快照的条件"><span class="toc-text">设置持久化快照的条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#持久化文件的存储目录"><span class="toc-text">持久化文件的存储目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Rdb-的问题"><span class="toc-text">Rdb 的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Aof-方式"><span class="toc-text">Aof 方式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis-的主从复制"><span class="toc-text">Redis 的主从复制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是主从复制"><span class="toc-text">什么是主从复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主从复制设置"><span class="toc-text">主从复制设置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#主机配置"><span class="toc-text">主机配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#从机配置"><span class="toc-text">从机配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-集群"><span class="toc-text">Redis 集群</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#redis-cluster-架构图"><span class="toc-text">redis-cluster 架构图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#redis-cluster-投票-容错"><span class="toc-text">redis-cluster 投票 容错</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-Ruby"><span class="toc-text">安装 Ruby</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#搭建集群"><span class="toc-text">搭建集群</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#连接集群"><span class="toc-text">连接集群</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看集群信息"><span class="toc-text">查看集群信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jedis连接集群"><span class="toc-text">jedis连接集群</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用-spring"><span class="toc-text">使用 spring</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试代码"><span class="toc-text">测试代码</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        redis入门
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-11-20 00:26:58</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Redis" title="Redis">Redis</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><h3 id="Redis介绍"><a href="#Redis介绍" class="headerlink" title="Redis介绍"></a>Redis介绍</h3><hr>
+<h4 id="Nosql-基本概念"><a href="#Nosql-基本概念" class="headerlink" title="Nosql 基本概念"></a>Nosql 基本概念</h4><p>为了解决高并发、高可用、高可扩展，大数据存储等一系列问题而产生的数据库解决方案，就是NoSql。<br>NoSql，叫非关系型数据库，它的全名Not only sql。它不能替代关系型数据库，只能作为关系型数据库的一个良好补充。</p>
+<h4 id="Nosql-分类"><a href="#Nosql-分类" class="headerlink" title="Nosql 分类"></a>Nosql 分类</h4><ul>
+<li>键值(Key-Value)存储数据库 相关产品： Tokyo Cabinet/Tyrant、Redis、Voldemort、Berkeley DB 典型应用： 内容缓存，主要用于处理大量数据的高访问负载。 数据模型： 一系列键值对 优势： 快速查询 劣势： 存储的数据缺少结构化</li>
+<li>列存储数据库 相关产品：Cassandra, HBase, Riak 典型应用：分布式的文件系统 数据模型：以列簇式存储，将同一列数据存在一起 优势：查找速度快，可扩展性强，更容易进行分布式扩展 劣势：功能相对局限</li>
+<li>文档型数据库 相关产品：CouchDB、MongoDB 典型应用：Web应用（与Key-Value类似，Value是结构化的） 数据模型： 一系列键值对 优势：数据结构要求不严格 劣势： 查询性能不高，而且缺乏统一的查询语法</li>
+<li>图形(Graph)数据库 相关数据库：Neo4J、InfoGrid、Infinite Graph 典型应用：社交网络 数据模型：图结构 优势：利用图结构相关算法。 劣势：需要对整个图做计算才能得出结果，不容易做分布式的集群方案。</li>
+</ul>
+<h4 id="Redis-基本概念"><a href="#Redis-基本概念" class="headerlink" title="Redis 基本概念"></a>Redis 基本概念</h4><p>Redis是使用c语言开发的一个高性能键值数据库。Redis可以通过一些键值类型来存储数据。 键值类型： String字符类型 map散列类型 list列表类型 set集合类型 sortedset有序集合类型</p>
+<h4 id="发展历史"><a href="#发展历史" class="headerlink" title="发展历史"></a>发展历史</h4><p>2008年，意大利的一家创业公司Merzia推出了一款基于MySQL的网站实时统计系统LLOOGG，然而没过多久该公司的创始人 Salvatore Sanfilippo便 对MySQL的性能感到失望，于是他决定亲自为LLOOGG量身定做一个数据库，并于2009年开发完成，这个数据库就是Redis。 不过Salvatore Sanfilippo并不满足只将Redis用于LLOOGG这一款产品，而是希望更多的人使用它，于是在同一年Salvatore Sanfilippo将Redis开源发布，并开始和Redis的另一名主要的代码贡献者Pieter Noordhuis一起继续着Redis的开发，直到今天。<br>Salvatore Sanfilippo自己也没有想到，短短的几年时间，Redis就拥有了庞大的用户群体。Hacker News在2012年发布了一份数据库的使用情况调查，结果显示有近12%的公司在使用Redis。国内如新浪微博、街旁网、知乎网，国外如GitHub、Stack Overflow、Flickr等都是Redis的用户。<br>VMware公司从2010年开始赞助Redis的开发， Salvatore Sanfilippo和Pieter Noordhuis也分别在3月和5月加入VMware，全职开发Redis。</p>
+<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>缓存（数据查询、短连接、新闻内容、商品内容等等）。（最多使用） 分布式集群架构中的session分离。 聊天室的在线好友列表。 任务队列。（秒杀、抢购、12306等等） 应用排行榜。 网站访问统计。 数据过期处理（可以精确到毫秒）</p>
+<h3 id="Redis-安装"><a href="#Redis-安装" class="headerlink" title="Redis 安装"></a>Redis 安装</h3><hr>
+<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p>官网地址：<a href="http://redis.io/" target="_blank" rel="noopener">http://redis.io/</a> 下载地址：<a href="http://download.redis.io/releases/redis-3.0.0.tar.gz" target="_blank" rel="noopener">http://download.redis.io/releases/redis-3.0.0.tar.gz</a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sftp 上传安装包到linux</span></span><br><span class="line"><span class="comment">#解压</span></span><br><span class="line">tar -zxvf redis.3.0.0.tar.gz</span><br><span class="line"><span class="comment">#安装c语言环境</span></span><br><span class="line">sudo apt-get install gcc-c++</span><br><span class="line"><span class="comment">#编译</span></span><br><span class="line"><span class="built_in">cd</span> redis-3.0.0</span><br><span class="line">make</span><br><span class="line"><span class="comment">#安装</span></span><br><span class="line">make install PREFIX = /usr/<span class="built_in">local</span>/redis</span><br><span class="line"><span class="comment"># 查看</span></span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/redis</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+
+<h3 id="redis-启动"><a href="#redis-启动" class="headerlink" title="redis 启动"></a>redis 启动</h3><h4 id="前端启动"><a href="#前端启动" class="headerlink" title="前端启动"></a>前端启动</h4><ul>
+<li>前端启动命令 ./redis-server</li>
+<li>前端启动的关闭 强制关闭 ctrl+c 正常关闭 ./redis-cli shutdown</li>
+</ul>
+<p><strong>tips:</strong>一旦客户端关闭，则redis服务也会停掉</p>
+<h4 id="后端启动"><a href="#后端启动" class="headerlink" title="后端启动"></a>后端启动</h4><ul>
+<li>将 redis 源码包中的 redis.conf 文件拷贝至 bin 目录下 cp /root/redis-3.0.0/redis.conf</li>
+<li>修改 redis.conf 文件，将 daemonize 改为 yes vim redis.conf</li>
+<li>使用后端命令启动 redis ./redis-server redis.conf</li>
+<li>查看是否启动成功 ps -aux | grep redis</li>
+<li>关闭后端启动的方式 强制关闭： kill -9 进程号 正常关闭：./redis-cli shutdown</li>
+</ul>
+<h3 id="Redis-客户端"><a href="#Redis-客户端" class="headerlink" title="Redis 客户端"></a>Redis 客户端</h3><hr>
+<h4 id="自带客户端"><a href="#自带客户端" class="headerlink" title="自带客户端"></a>自带客户端</h4><ul>
+<li>启动 ./redis-cli -h 127.0.0.1 -p 6379 -h 指定访问 redis 服务器的 ip 地址 -p 指定访问的 redis 服务器的 port 端口 还可以写成 ./redis-cli 使用默认配置，默认ip 127.0.0.1,默认端口 6379</li>
+<li>关闭 ctrl + c 127.0.0.1:6379&gt;quit</li>
+</ul>
+<h4 id="图形界面客户端"><a href="#图形界面客户端" class="headerlink" title="图形界面客户端"></a>图形界面客户端</h4><p>redis-desktop-manager 打开如下：<br>[image:B3C0C376-80DB-4E5F-B28B-CEB593F0A8E2-1233-0000817AF9C5FAA3/164a814fb76b84fb.png]<br>[image:1DC6AAC5-4431-4BA1-BDA8-DC0E34D4B420-1233-0000817E62C0D5C0/164a814fb77dd501.png]<br>选择数据库方式： select 加上数据库的下标，就可以选择指定的数据库使用，下标从0开始。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; select 15</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379[15]&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="jedis-客户端"><a href="#jedis-客户端" class="headerlink" title="jedis 客户端"></a>jedis 客户端</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>Redis不仅是使用命令来操作，现在基本上主流的语言都有客户端支持，比如java、C、C#、C++、php、Node.js、Go等。<br>在官方网站里列一些Java的客户端，有Jedis、Redisson、Jredis、JDBC-Redis、等其中官方推荐使用Jedis和Redisson。 在企业中用的最多的就是Jedis，下面我们就重点学习下Jedis。<br>Jedis同样也是托管在github上，地址：<a href="https://github.com/xetorthio/jedis" target="_blank" rel="noopener">https://github.com/xetorthio/jedis</a></p>
+<h4 id="工程搭建"><a href="#工程搭建" class="headerlink" title="工程搭建"></a>工程搭建</h4><ul>
+<li>添加 jar commons-pool2-2.3.jar jedis-2.7.0.jar</li>
+</ul>
+<h4 id="单例连接redis"><a href="#单例连接redis" class="headerlink" title="单例连接redis"></a>单例连接redis</h4><p>[image:6EBCB229-93DC-4726-8B90-415AA0308CCD-1233-00008260493C9B9B/164a814fb78554a7.jpg]</p>
+<h4 id="使用连接池连接-redis"><a href="#使用连接池连接-redis" class="headerlink" title="使用连接池连接 redis"></a>使用连接池连接 redis</h4><p>[image:F411BD3E-EA04-463A-97AB-8672EDA6BA6D-1233-000082686ADE3522/164a814fb7d9bcaf.jpg]</p>
+<h4 id="Spring-整合-jedisPool"><a href="#Spring-整合-jedisPool" class="headerlink" title="Spring 整合 jedisPool"></a>Spring 整合 jedisPool</h4><p>添加 spring 的 jar 包 配置 spring 配置文件 applicationContext.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xmlns:mvc</span>=<span class="string">"http://www.springframework.org/schema/mvc"</span> <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span> <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span> <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span> <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd "</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 连接池配置 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"jedisPoolConfig"</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.JedisPoolConfig"</span>&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 最大连接数 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxTotal"</span> <span class="attr">value</span>=<span class="string">"30"</span> /&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 最大空闲连接数 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxIdle"</span> <span class="attr">value</span>=<span class="string">"10"</span> /&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 每次释放连接的最大数目 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"numTestsPerEvictionRun"</span> <span class="attr">value</span>=<span class="string">"1024"</span> /&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 释放连接的扫描间隔（毫秒） --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"timeBetweenEvictionRunsMillis"</span> <span class="attr">value</span>=<span class="string">"30000"</span> /&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 连接最小空闲时间 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"minEvictableIdleTimeMillis"</span> <span class="attr">value</span>=<span class="string">"1800000"</span> /&gt;</span> <span class="comment">&lt;!-- 连接空闲多久后释放, 当空闲时间&gt;该值 且 空闲连接&gt;最大空闲连接数 时直接释放 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"softMinEvictableIdleTimeMillis"</span> <span class="attr">value</span>=<span class="string">"10000"</span> /&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 获取连接时的最大等待毫秒数,小于零:阻塞不确定的时间,默认-1 --&gt;</span> <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxWaitMillis"</span> <span class="attr">value</span>=<span class="string">"1500"</span> /&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 在获取连接的时候检查有效性, 默认false --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testOnBorrow"</span> <span class="attr">value</span>=<span class="string">"false"</span> /&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 在空闲时检查有效性, 默认false --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testWhileIdle"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 连接耗尽时是否阻塞, false报异常,ture阻塞直到超时, 默认true --&gt;</span> <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"blockWhenExhausted"</span> <span class="attr">value</span>=<span class="string">"false"</span> /&gt;</span> <span class="tag">&lt;/<span class="name">bean</span>&gt;</span> <span class="comment">&lt;!-- redis单机 通过连接池 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"jedisPool"</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.JedisPool"</span> <span class="attr">destroy-method</span>=<span class="string">"close"</span>&gt;</span> <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"poolConfig"</span> <span class="attr">ref</span>=<span class="string">"jedisPoolConfig"</span> /&gt;</span> <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"host"</span> <span class="attr">value</span>=<span class="string">"192.168.242.130"</span> /&gt;</span> <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"port"</span> <span class="attr">value</span>=<span class="string">"6379"</span> /&gt;</span> <span class="tag">&lt;/<span class="name">bean</span>&gt;</span> <span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>测试代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testJedisPool</span><span class="params">()</span> </span>&#123; </span><br><span class="line">JedisPool pool = (JedisPool)applicationContext.getBean(<span class="string">"jedisPool"</span>); </span><br><span class="line">Jedis jedis = <span class="keyword">null</span>; </span><br><span class="line"><span class="keyword">try</span> &#123; </span><br><span class="line">jedis = pool.getResource(); </span><br><span class="line">jedis.set(<span class="string">"name"</span>, <span class="string">"lisi"</span>); </span><br><span class="line">String name = jedis.get(<span class="string">"name"</span>); </span><br><span class="line">System.out.println(name); </span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception ex) &#123; </span><br><span class="line">ex.printStackTrace(); </span><br><span class="line">&#125; <span class="keyword">finally</span> &#123; </span><br><span class="line"><span class="keyword">if</span> (jedis != <span class="keyword">null</span>) &#123;</span><br><span class="line"> <span class="comment">// 关闭连接 </span></span><br><span class="line">jedis.close(); </span><br><span class="line">&#125; </span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><hr>
+<h4 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a>String 类型</h4><p>赋值 set key value</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> <span class="built_in">test</span> 123</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+<p>取值 get key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; get <span class="built_in">test</span></span><br><span class="line"><span class="string">"123"</span></span><br></pre></td></tr></table></figure>
+<p>取值并赋值 get set key value</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; getset <span class="built_in">test</span> 321</span><br><span class="line"><span class="string">"123"</span></span><br><span class="line">127.0.0.1:6379&gt; get <span class="built_in">test</span></span><br><span class="line"><span class="string">"321"</span></span><br></pre></td></tr></table></figure>
+<p>设置获取多个键值 mset key value [key value…] mget key [key…]</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; mset k1 v1 k2 v2 k3 v3</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; mget k1 k2</span><br><span class="line">1) <span class="string">"v1"</span></span><br><span class="line">2) <span class="string">"v2"</span></span><br></pre></td></tr></table></figure>
+<p>删除 del key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; del <span class="built_in">test</span></span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure>
+<p>数值增减</p>
+<ul>
+<li>递增数字 当存储的字符串是整数时，Redis提供了一个实用的命令INCR，其作用是让当前键值递增，并返回递增后的值。 语法：incr key<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> num 1 OK 127.0.0.1:6379&gt; incr num (<span class="built_in">integer</span>) 2 127.0.0.1:6379&gt; incr num (<span class="built_in">integer</span>) 3 127.0.0.1:6379&gt; incr num (<span class="built_in">integer</span>) 4</span><br></pre></td></tr></table></figure></li>
+<li>增加指定的整数 incrby key increment</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; incrby num 2</span><br><span class="line">(<span class="built_in">integer</span>) 8</span><br><span class="line">127.0.0.1:6379&gt; incrby num 2</span><br><span class="line">(<span class="built_in">integer</span>) 10</span><br></pre></td></tr></table></figure>
+<ul>
+<li>递减数值 decr key<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; decr num</span><br><span class="line">(<span class="built_in">integer</span>) 9</span><br><span class="line">127.0.0.1:6379&gt; decr num</span><br><span class="line">(<span class="built_in">integer</span>) 8</span><br></pre></td></tr></table></figure></li>
+<li>减少指定的数值 decryby key decrement<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; decrby num 2</span><br><span class="line">(<span class="built_in">integer</span>) 6</span><br><span class="line">127.0.0.1:6379&gt; decrby num 2</span><br><span class="line">(<span class="built_in">integer</span>) 4</span><br></pre></td></tr></table></figure>
+向尾部追加值 APPEND的作用是向键值的末尾追加value。如果键不存在则将该键的值设置为value，即相当于 SET key value。返回值是追加后字符串的总长度。 语法：append key value</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> str hello</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; append str <span class="string">"world"</span></span><br><span class="line">(<span class="built_in">integer</span>) 10</span><br><span class="line">127.0.0.1:6379&gt; get str</span><br><span class="line"><span class="string">"helloworld"</span></span><br></pre></td></tr></table></figure>
+<p>获取字符串长度 STRLEN命令返回键值的长度，如果键不存在则返回0。 语法：strlen key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; strlen str</span><br><span class="line">(<span class="built_in">integer</span>) 10</span><br></pre></td></tr></table></figure>
+
+<p>应用</p>
+<ul>
+<li>自增主键 商品编号、订单号采用 string 的递增数字特性生成<h3 id="Hash-散列类型"><a href="#Hash-散列类型" class="headerlink" title="Hash 散列类型"></a>Hash 散列类型</h3><h4 id="使用-string-的问题"><a href="#使用-string-的问题" class="headerlink" title="使用 string 的问题"></a>使用 string 的问题</h4>假设有User对象以JSON序列化的形式存储到Redis中，User对象有id，username、password、age、name等属性，存储的过程如下： 保存、更新：User对象 json(string) redis<br>如果在业务上只是更新age属性，其他的属性并不做更新我应该怎么做呢？ 如果仍然采用上边的方法在传输、处理时会造成资源浪费，下边讲的hash可以很好的解决这个问题。</li>
+</ul>
+<h4 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h4><p>Hash叫散列类型，它提供了字段和字段值的映射。字段值只能是字符串类型，不支持散列类型、集合类型等其它类型。如下：<br>[image:4AE26D63-F3BF-450E-8D10-13545CB7838E-1233-000083499BF8DDEB/164a814fb7c5cdaf.png]</p>
+<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><p>赋值 HSET命令不区分插入和更新操作，当执行插入操作时HSET命令返回1，当执行更新操作时返回0。</p>
+<ul>
+<li>一次只设置一个字段值 语法：hset key field value<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hset user username zhangsan</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure></li>
+<li>一次设置多个字段值 语法：hmset key field value [field value…]<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hmset user age 20 username lisi</span><br><span class="line">OK</span><br></pre></td></tr></table></figure></li>
+<li>当字段不存在时赋值，类似hset,区别在于如果字段存在，该命令不执行任何操作。 语法：hsetnx key field value<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hsetnx user age 30</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>取值</p>
+<ul>
+<li>一次获取一个字段值 语法：hget key field<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hget user username</span><br><span class="line"><span class="string">"lisi"</span></span><br></pre></td></tr></table></figure></li>
+<li>一次可以获取多个字段值 语法：hmget key field [field…]<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hmget user age username</span><br><span class="line">1) <span class="string">"20"</span></span><br><span class="line">2) <span class="string">"lisi"</span></span><br></pre></td></tr></table></figure></li>
+<li>获取所有字段值 语法：hgetall key<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hgetall user</span><br><span class="line">1) <span class="string">"username"</span></span><br><span class="line">2) <span class="string">"lisi"</span></span><br><span class="line">3) <span class="string">"age"</span></span><br><span class="line">4) <span class="string">"20"</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>删除字段 可以删除一个或多个字段，返回值是被删除的字段的个数。 语法：hdel key field [field…]</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hdel user age</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; hdel user age username</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure>
+
+<p>增加数字 语法：hincrby key field increment</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hincrby user age 2</span><br><span class="line">(<span class="built_in">integer</span>) 2</span><br></pre></td></tr></table></figure>
+
+<p>判断字段是否存在 语法：hexists key field</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hexists user age</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure>
+
+<p>只获取字段名或字段值 语法： hkeys key hvals key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hkeys user</span><br><span class="line">1) <span class="string">"age"</span></span><br></pre></td></tr></table></figure>
+
+<p>获取字段数量 语法：hlen key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hlen user</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure>
+
+<p>应用 存储商品信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hlen user</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure>
+
+<p>获取商品信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; hgetall items:1001</span><br><span class="line">1) <span class="string">"id"</span></span><br><span class="line">2) <span class="string">"3"</span></span><br><span class="line">3) <span class="string">"name"</span></span><br><span class="line">4) <span class="string">"apple"</span></span><br><span class="line">5) <span class="string">"price"</span></span><br><span class="line">6) <span class="string">"5.00"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="List-类型"><a href="#List-类型" class="headerlink" title="List 类型"></a>List 类型</h3><h4 id="ArrayList-和-LinkedList-的区别"><a href="#ArrayList-和-LinkedList-的区别" class="headerlink" title="ArrayList 和 LinkedList 的区别"></a>ArrayList 和 LinkedList 的区别</h4><p>Arraylist是使用数组来存储数据，特点：查询快、增删慢</p>
+<p>Linkedlist是使用双向链表存储数据，特点：增删快、查询慢，但是查询链表两端的数据也很快。</p>
+<p>Redis的list是采用来链表来存储的，所以对于redis的list数据类型的操作，是操作list的两端数据来操作的。</p>
+<h4 id="命令-1"><a href="#命令-1" class="headerlink" title="命令"></a>命令</h4><p>向列表两端增加元素</p>
+<ul>
+<li>向列表左边增加元素 语法：lpush key value [value…]<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lpush list:1 1 2 3</span><br><span class="line">(<span class="built_in">integer</span>) 3</span><br></pre></td></tr></table></figure></li>
+<li>向列表右边增加元素 语法：rpush key value [value…]<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; rpush list:1 4 5 6</span><br><span class="line">(<span class="built_in">integer</span>) 6</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>查看列表 LRANGE命令是列表类型最常用的命令之一，获取列表中的某一片段，将返回start、stop之间的所有元素（包含两端的元素），索引从0开始。索引可以是负数，如：“-1”代表最后边的一个元素。</p>
+<p>语法：lrange key start stop</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange list:1 0 2 </span><br><span class="line">1) <span class="string">"3"</span> </span><br><span class="line">2) <span class="string">"2"</span> </span><br><span class="line">3) <span class="string">"1"</span> </span><br><span class="line">127.0.0.1:6379&gt; lrange list:1 0 -1 </span><br><span class="line">1) <span class="string">"3"</span> </span><br><span class="line">2) <span class="string">"2"</span> </span><br><span class="line">3) <span class="string">"1"</span> </span><br><span class="line">4) <span class="string">"4"</span> </span><br><span class="line">5) <span class="string">"5"</span> </span><br><span class="line">6) <span class="string">"6"</span></span><br></pre></td></tr></table></figure>
+
+<p>从列表两端弹出元素 LPOP命令从列表左边弹出一个元素，会分两步完成：</p>
+<ul>
+<li>第一步是将列表左边的元素从列表中移除</li>
+<li>第二步是返回被移除的元素值。 语法： lpop key rpop key<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lpop list:1</span><br><span class="line"><span class="string">"3"</span></span><br><span class="line">127.0.0.1:6379&gt; rpop list:1</span><br><span class="line"><span class="string">"6"</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>删除列表中指定的值 LREM命令会删除列表中前count个值为value的元素，返回实际删除的元素个数。根据count值的不同，该命令的执行方式会有所不同：</p>
+<ul>
+<li>当count&gt;0时， LREM会从列表左边开始删除。</li>
+<li>当count&lt;0时， LREM会从列表后边开始删除。</li>
+<li>当count=0时， LREM删除所有值为value的元素。</li>
+</ul>
+<p>语法：lrem key count value</p>
+<p>获得/设置指定索引的元素值</p>
+<ul>
+<li><p>获得指定索引的元素值 语法：lindex key index</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lindex list:1 2</span><br><span class="line"><span class="string">"4"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置指定索引的元素值 语法：lset key index value</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lset list:1 2 2</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+
+<p>只保留列表指定片段 指定范围和 lrange 一致 语法：ltrim key start stop</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange list:1 0 -1 </span><br><span class="line">1) <span class="string">"2"</span> </span><br><span class="line">2) <span class="string">"1"</span> </span><br><span class="line">3) <span class="string">"2"</span> </span><br><span class="line">4) <span class="string">"5"</span> </span><br><span class="line">127.0.0.1:6379&gt; ltrim list:1 0 2 </span><br><span class="line">OK </span><br><span class="line">127.0.0.1:6379&gt; lrange list:1 0 -1 </span><br><span class="line">1) <span class="string">"2"</span> </span><br><span class="line">2) <span class="string">"1"</span> </span><br><span class="line">3) <span class="string">"2"</span></span><br></pre></td></tr></table></figure>
+
+<p>向列表中插入元素 该命令首先会在列表中从左到右查找值为pivot的元素，然后根据第二个参数是BEFORE还是AFTER来决定将value插入到该元素的前面还是后面。 语法：linsert key before | after pivot value</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange list:1 0 -1 </span><br><span class="line">1) <span class="string">"2"</span> </span><br><span class="line">2) <span class="string">"1"</span> </span><br><span class="line">3) <span class="string">"2"</span> </span><br><span class="line">127.0.0.1:6379&gt; linsert list:1 after 1 9 </span><br><span class="line">(<span class="built_in">integer</span>) 4 </span><br><span class="line">127.0.0.1:6379&gt; lrange list:1 0 -1 </span><br><span class="line">1) <span class="string">"2"</span> </span><br><span class="line">2) <span class="string">"1"</span> </span><br><span class="line">3) <span class="string">"9"</span> </span><br><span class="line">4) <span class="string">"2"</span></span><br></pre></td></tr></table></figure>
+
+<p>将元素从一个列表转移到另一个列表 语法：rpoplpush source destination</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange list:1 0 -1 </span><br><span class="line">1) <span class="string">"2"</span> </span><br><span class="line">2) <span class="string">"1"</span> </span><br><span class="line">3) <span class="string">"9"</span> </span><br><span class="line">4) <span class="string">"2"</span> </span><br><span class="line">127.0.0.1:6379&gt; rpoplpush list:1 newlist </span><br><span class="line"><span class="string">"2"</span> </span><br><span class="line">127.0.0.1:6379&gt; lrange newlist 0 -1 </span><br><span class="line">1) <span class="string">"2"</span> </span><br><span class="line">127.0.0.1:6379&gt; lrange list:1 0 -1 </span><br><span class="line">1) <span class="string">"2"</span> </span><br><span class="line">2) <span class="string">"1"</span> </span><br><span class="line">3) <span class="string">"9"</span></span><br></pre></td></tr></table></figure>
+
+<p>应用 在Redis中创建商品评论列表 用户发布商品评论，将评论信息转成json存储到list中。 用户在页面查询评论列表，从redis中取出json数据展示到页面。</p>
+<p>定义商品评论列表key： 商品编号为1001的商品评论key【items: comment:1001】</p>
+<h3 id="Set-类型"><a href="#Set-类型" class="headerlink" title="Set 类型"></a>Set 类型</h3><blockquote>
+<p>集合类型：无序、不可重复 列表类型：有序、可重复</p>
+</blockquote>
+<h4 id="命令-2"><a href="#命令-2" class="headerlink" title="命令"></a>命令</h4><p>增加/删除元素 语法：sadd key member [member…]</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> a b c</span><br><span class="line">(<span class="built_in">integer</span>) 3</span><br><span class="line">127.0.0.1:6379&gt; sadd <span class="built_in">set</span> a</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br></pre></td></tr></table></figure>
+
+<p>语法：srem key member [member…]</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; srem <span class="built_in">set</span> c</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure>
+
+<p>获得集合中的所有元素 语法：smembers key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; smembers <span class="built_in">set</span></span><br><span class="line">1) <span class="string">"b"</span></span><br><span class="line">2) <span class="string">"a"</span></span><br></pre></td></tr></table></figure>
+
+<p>判断元素是否在集合中 语法：sismember key member</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sismember <span class="built_in">set</span> a</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; sismember <span class="built_in">set</span> h</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br></pre></td></tr></table></figure>
+
+<h3 id="运算命令"><a href="#运算命令" class="headerlink" title="运算命令"></a>运算命令</h3><p>集合的差集运算 A-B 属于 A 并且 不属于 B 的元素构成的集合</p>
+<p>[image:5C7853BC-8199-4101-8B1C-BA929DC4734E-1233-0000848259EFEA09/164a814fb7f44674.jpg]</p>
+<p>语法：sdiff key [key…]</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sadd setA 1 2 3 </span><br><span class="line">(<span class="built_in">integer</span>) 3 </span><br><span class="line">127.0.0.1:6379&gt; sadd setB 2 3 4 </span><br><span class="line">(<span class="built_in">integer</span>) 3 </span><br><span class="line">127.0.0.1:6379&gt; sdiff setA setB </span><br><span class="line">1) <span class="string">"1"</span> </span><br><span class="line">127.0.0.1:6379&gt; sdiff setB setA </span><br><span class="line">1) <span class="string">"4"</span></span><br></pre></td></tr></table></figure>
+
+<p>集合的交集运算 属于A且属于B的元素构成的集合</p>
+<p>[image:0F29ED34-4FB3-4C28-92FD-80863F434A77-1233-0000849B377A2E72/164a814fdd992d6b.jpg]<br>语法：sinter key [key…]</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sinter setA setB</span><br><span class="line">1) <span class="string">"2"</span></span><br><span class="line">2) <span class="string">"3"</span></span><br></pre></td></tr></table></figure>
+
+<p>集合的并集运算 属于 A 或者 属于 B 的元素构成的集合</p>
+<p>[image:201C2779-14BD-4812-B8CC-CEDF0DBA59E5-1233-000084A65168840C/164a814fdf3b75b5.jpg]</p>
+<p>语法：sunion key [key…]</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sunion setA setB</span><br><span class="line">1) <span class="string">"1"</span></span><br><span class="line">2) <span class="string">"2"</span></span><br><span class="line">3) <span class="string">"3"</span></span><br><span class="line">4) <span class="string">"4"</span></span><br></pre></td></tr></table></figure>
+
+<p>获得集合中元素的个数 语法：scard key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; smembers setA</span><br><span class="line">1) <span class="string">"1"</span></span><br><span class="line">2) <span class="string">"2"</span></span><br><span class="line">3) <span class="string">"3"</span></span><br><span class="line">127.0.0.1:6379&gt; scard setA</span><br><span class="line">(<span class="built_in">integer</span>) 3</span><br></pre></td></tr></table></figure>
+
+<p>从集合中弹出一个元素 注意:由于集合是无序的，所有spop命令会从集合中随机选择一个元素弹出。 语法：spop key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; spop setA</span><br><span class="line"><span class="string">"2"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Sortedset-类型"><a href="#Sortedset-类型" class="headerlink" title="Sortedset 类型"></a>Sortedset 类型</h3><p>Sortedset 又叫 zset Sortedset 是有序集合，可排序的，但是唯一。 Sortedset 和 set 的不同之处，会给 set 中元素添加一个分数，然后通过这个分数进行排序。</p>
+<h4 id="命令-3"><a href="#命令-3" class="headerlink" title="命令"></a>命令</h4><h4 id="增加元素"><a href="#增加元素" class="headerlink" title="增加元素"></a>增加元素</h4><p>向有序集合中加入一个元素和该元素的分数，如果该元素已经存在则会用新的分数替换原有的分数。返回值是新加入到集合中的元素个数，不包含之前已经存在的元素。 语法：zadd key score member [score member…]</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zadd scoreboard 80 zhangsan 89 lisi 94 wangwu</span><br><span class="line">(<span class="built_in">integer</span>) 3</span><br><span class="line">127.0.0.1:6379&gt; zadd scoreboard 97 lisi</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取元素分数"><a href="#获取元素分数" class="headerlink" title="获取元素分数"></a>获取元素分数</h4><p>语法：zscore key member</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zscore scoreboard lisi</span><br><span class="line"><span class="string">"97"</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="获得排名在某个范围的元素列表"><a href="#获得排名在某个范围的元素列表" class="headerlink" title="获得排名在某个范围的元素列表"></a>获得排名在某个范围的元素列表</h4><p>获得排名在某个范围的元素列表</p>
+<ul>
+<li>按照元素分数从小到大的顺序返回索引从start到stop之间的所有元素（包含两端的元素） 语法：zrange key start stop [withscores]<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrange scoreboard 0 2</span><br><span class="line">1) <span class="string">"zhangsan"</span></span><br><span class="line">2) <span class="string">"wangwu"</span></span><br></pre></td></tr></table></figure></li>
+<li>按照元素分数从大到小的顺序返回索引从start到stop之间的所有元素（包含两端的元素） 语法：zrevrange key start stop [withscores]<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrevrange scoreboard 0 2</span><br><span class="line">1) <span class="string">"wangwu"</span></span><br><span class="line">2) <span class="string">"zhangsan"</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>如果需要获得元素的分数可以在命令末尾加上 withscores 参数 ··· 127.0.0.1:6379&gt; zrevrange scoreboard 0 2 withscores</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. <span class="string">"wangwu"</span></span><br><span class="line">2. <span class="string">"94"</span></span><br><span class="line">3. <span class="string">"zhangsan"</span></span><br><span class="line">4. <span class="string">"80"</span> ···</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取元素的排名"><a href="#获取元素的排名" class="headerlink" title="获取元素的排名"></a>获取元素的排名</h4><ul>
+<li><p>从小到大 语法：zrank key member</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrank scoreboard zhangsan</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从大到小 语法：zrevrank key member</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrevrank scoreboard zhangsan</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="获得指定分数范围的元素"><a href="#获得指定分数范围的元素" class="headerlink" title="获得指定分数范围的元素"></a>获得指定分数范围的元素</h4><p>语法：zrangebyscore key min max [withscores] [limit offset count]</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZRANGEBYSCORE scoreboard 90 97 WITHSCORES </span><br><span class="line">1) <span class="string">"wangwu"</span> </span><br><span class="line">2) <span class="string">"94"</span> </span><br><span class="line">3) <span class="string">"lisi"</span> </span><br><span class="line">4) <span class="string">"97"</span> </span><br><span class="line">127.0.0.1:6379&gt; ZRANGEBYSCORE scoreboard 70 100 <span class="built_in">limit</span> 1 2 </span><br><span class="line">1) <span class="string">"wangwu"</span> </span><br><span class="line">2) <span class="string">"lisi"</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="增加某个元素的分数"><a href="#增加某个元素的分数" class="headerlink" title="增加某个元素的分数"></a>增加某个元素的分数</h4><p>返回值是更改后的分数 语法：zincrby key increment member</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZINCRBY scoreboard 4 lisi </span><br><span class="line"><span class="string">"101“</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="获得集合中元素的数量"><a href="#获得集合中元素的数量" class="headerlink" title="获得集合中元素的数量"></a>获得集合中元素的数量</h4><p>语法：zcard key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zcard scoreboard</span><br><span class="line">(<span class="built_in">integer</span>) 3</span><br></pre></td></tr></table></figure>
+
+<h4 id="获得指定分数范围内的元素个数"><a href="#获得指定分数范围内的元素个数" class="headerlink" title="获得指定分数范围内的元素个数"></a>获得指定分数范围内的元素个数</h4><p>语法：zcount key min max</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zcount scoreboard 80 90</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure>
+
+<h4 id="按照排名范围删除元素"><a href="#按照排名范围删除元素" class="headerlink" title="按照排名范围删除元素"></a>按照排名范围删除元素</h4><p>语法：zremrangebyrank key start stop</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zremrangebyrank scoreboard 0 1</span><br><span class="line">(<span class="built_in">integer</span>) 2</span><br><span class="line">127.0.0.1:6379&gt; zrange scoreboard 0 -1</span><br><span class="line">1) <span class="string">"wangwu"</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="按照分数范围删除元素"><a href="#按照分数范围删除元素" class="headerlink" title="按照分数范围删除元素"></a>按照分数范围删除元素</h4><p>语法：zremrangebyscore key min max</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zadd scoreboard 84 zhangsan    </span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; ZREMRANGEBYSCORE scoreboard 80 100</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure>
+
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><h4 id="商品销售排行榜"><a href="#商品销售排行榜" class="headerlink" title="商品销售排行榜"></a>商品销售排行榜</h4><p>需求：根据商品销售量对商品进行排行显示 思路：定义商品销售排行榜（sorted set集合），Key为items:sellsort，分数为商品销售量。</p>
+<p>写入商品销售量：</p>
+<ul>
+<li>商品编号1001的销量是9，商品编号1002的销量是10 192.168.101.3:7007&gt; ZADD items:sellsort 9 1001 10 1002</li>
+<li>商品编号1001的销量加1 192.168.101.3:7001&gt; ZINCRBY items:sellsort 1 1001</li>
+<li>商品销量前10名： 192.168.101.3:7001&gt; ZRANGE items:sellsort 0 9 withscores</li>
+</ul>
+<h2 id="keys-命令"><a href="#keys-命令" class="headerlink" title="keys 命令"></a>keys 命令</h2><hr>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
+<li>keys 返回满足给定pattern 的所有key redis 127.0.0.1:6379&gt; keys mylist*<ol>
+<li>“mylist”</li>
+<li>“mylist5”</li>
+<li>“mylist6”</li>
+<li>“mylist7”</li>
+<li>“mylist8”</li>
+</ol>
+</li>
+<li>exists 确认一个key 是否存在 示例：从结果来看，数据库中不存在HongWan 这个key，但是age 这个key 是存在的 redis 127.0.0.1:6379&gt; exists HongWan (integer) 0 redis 127.0.0.1:6379&gt; exists age (integer) 1 redis 127.0.0.1:6379&gt;</li>
+<li>del 删除一个key redis 127.0.0.1:6379&gt; del age (integer) 1 redis 127.0.0.1:6379&gt; exists age (integer) 0</li>
+<li>rename 重命名key 示例：age 成功的被我们改名为age_new 了 redis 127.0.0.1:6379[1]&gt; keys *</li>
+</ul>
+<ol>
+<li>“age” redis 127.0.0.1:6379[1]&gt; rename age age_new OK redis 127.0.0.1:6379[1]&gt; keys *</li>
+<li>“age_new” redis 127.0.0.1:6379[1]&gt;</li>
+</ol>
+<ul>
+<li><ul>
+<li>type 返回值的类型 示例：这个方法可以非常简单的判断出值的类型 redis 127.0.0.1:6379&gt; type addr string redis 127.0.0.1:6379&gt; type myzset2 zset redis 127.0.0.1:6379&gt; type mylist list redis 127.0.0.1:6379&gt;</li>
+</ul>
+</li>
+</ul>
+<h3 id="设置-key-的生存时间"><a href="#设置-key-的生存时间" class="headerlink" title="设置 key 的生存时间"></a>设置 key 的生存时间</h3><p>Redis在实际使用过程中更多的用作缓存，然而缓存的数据一般都是需要设置生存时间的，即：到期后数据销毁。</p>
+<p>|         |       |<br>|  EXPIRE key seconds  | 设置key的生存时间（单位：秒）key在多少秒后会自动删除|<br>| TTL key  |查看key剩余的生存时间 |<br>| PERSIST key |清除生存时间 |<br>| PEXPIRE key milliseconds |生存时间设置单位为：毫秒 |</p>
+<p>例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.101.3:7002&gt; <span class="built_in">set</span> <span class="built_in">test</span> 1 设置<span class="built_in">test</span>的值为1 OK 192.168.101.3:7002&gt; get <span class="built_in">test</span> 获取<span class="built_in">test</span>的值 <span class="string">"1"</span> 192.168.101.3:7002&gt; EXPIRE <span class="built_in">test</span> 5 设置<span class="built_in">test</span>的生存时间为5秒 (<span class="built_in">integer</span>) 1 192.168.101.3:7002&gt; TTL <span class="built_in">test</span> 查看<span class="built_in">test</span>的生于生成时间还有1秒删除 (<span class="built_in">integer</span>) 1 192.168.101.3:7002&gt; TTL <span class="built_in">test</span> (<span class="built_in">integer</span>) -2 192.168.101.3:7002&gt; get <span class="built_in">test</span> 获取<span class="built_in">test</span>的值，已经删除 (nil)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Redis-持久化方案"><a href="#Redis-持久化方案" class="headerlink" title="Redis 持久化方案"></a>Redis 持久化方案</h3><h4 id="Rdb-方式"><a href="#Rdb-方式" class="headerlink" title="Rdb 方式"></a>Rdb 方式</h4><p>Redis 默认的方式，redis 通过快照方式将数据持久化到磁盘中。</p>
+<h4 id="设置持久化快照的条件"><a href="#设置持久化快照的条件" class="headerlink" title="设置持久化快照的条件"></a>设置持久化快照的条件</h4><p>在 redis.conf 中修改持久化快照的条件：<br>[image:66558BDA-3BD8-4FFF-BF8E-87DB340F8431-1233-0000869386BE2559/164a814fe0a1ada1.png]</p>
+<h4 id="持久化文件的存储目录"><a href="#持久化文件的存储目录" class="headerlink" title="持久化文件的存储目录"></a>持久化文件的存储目录</h4><p>在 redis.conf 中可以指定持久化文件的存储目录</p>
+<p>[image:E439E41B-3456-4B9C-8C17-A6447DA5CE38-1233-0000869DBC934801/164a814fe1863fc4.png]</p>
+<h4 id="Rdb-的问题"><a href="#Rdb-的问题" class="headerlink" title="Rdb 的问题"></a>Rdb 的问题</h4><p>一旦redis非法关闭，那么会丢失最后一次持久化之后的数据。</p>
+<p>如果数据不重要，则不必要关心。 如果数据不能允许丢失，那么要使用 aof 方式。</p>
+<h4 id="Aof-方式"><a href="#Aof-方式" class="headerlink" title="Aof 方式"></a>Aof 方式</h4><p>Redis 默认是不使用该方式持久化的。Aof 方式的持久化，是操作一次 redis 数据库，则将操作的记录存储到 aof 持久化文件中。</p>
+<ul>
+<li>第一步：开启 aof 方式持久化方案。 将redis.conf中的appendonly改为yes，即开启aof方式的持久化方案。<br>[image:CD09A3F6-DA96-455F-ACCA-AB0ADEDEEFB4-1233-000086B200819B9C/164a814fe9e43230.png]</li>
+<li>Aof文件存储的目录和rdb方式的一样。 Aof文件存储的名称<br>[image:277139A0-9EF7-4F9F-B6B7-0859CB4C073E-1233-000086B64AE551C2/164a815002bc38e1.png]</li>
+</ul>
+<p>在使用aof和rdb方式时，如果redis重启，则数据从aof文件加载。</p>
+<h2 id="Redis-的主从复制"><a href="#Redis-的主从复制" class="headerlink" title="Redis 的主从复制"></a>Redis 的主从复制</h2><hr>
+<h3 id="什么是主从复制"><a href="#什么是主从复制" class="headerlink" title="什么是主从复制"></a>什么是主从复制</h3><p>持久化保证了即使redis服务重启也不会丢失数据，因为redis服务重启后会将硬盘上持久化的数据恢复到内存中，但是当redis服务器的硬盘损坏了可能会导致数据丢失，如果通过redis的主从复制机制就可以避免这种单点故障，如下图：<br>[image:F94ACC77-2259-4E5C-A2FD-AB397C7C7330-1233-000086CCF9808B1B/164a81500462a9fe.png]</p>
+<p>说明：</p>
+<ul>
+<li>主redis中的数据有两个副本（replication）即从redis1和从redis2，即使一台redis服务器宕机其它两台redis服务也可以继续提供服务。</li>
+<li>主redis中的数据和从redis上的数据保持实时同步，当主redis写入数据时通过主从复制机制会复制到两个从redis服务上。</li>
+<li>只有一个主redis，可以有多个从redis。</li>
+<li>主从复制不会阻塞master，在同步数据时，master 可以继续处理client 请求</li>
+<li>一个redis可以即是主又是从，如下图：<br>[image:A66B668D-3E02-4625-B8D0-4E8E8460BB6E-1233-000086EB59D21777/164a81500a27a479.png]</li>
+</ul>
+<h3 id="主从复制设置"><a href="#主从复制设置" class="headerlink" title="主从复制设置"></a>主从复制设置</h3><h4 id="主机配置"><a href="#主机配置" class="headerlink" title="主机配置"></a>主机配置</h4><p>无需配置</p>
+<h4 id="从机配置"><a href="#从机配置" class="headerlink" title="从机配置"></a>从机配置</h4><ul>
+<li>第一步：复制出一个从机cp bin/ bin2 -r</li>
+<li>第二步：修改从机的 redis.conf 语法：slaveof masterip masterport slaveof 192.168.242.137 6379<br>[image:9030845F-B001-4C65-BD4F-D947802C2ABD-1233-000087073B20920C/164a81500eb3446c.png]</li>
+<li>第三步：修改从机的 port 地址为 6380<br>[image:D82886AF-109A-4E01-80E9-5CBAB8606197-1233-0000870CCEFDC2C5/164a815020992d63.png]</li>
+<li>第四步：清除从机的持久化文件 rm -rf appendonly.aof dump.rdb</li>
+<li>第五步：启动从机 ./redis-server redis.conf</li>
+<li>第六步：启动6380的客户端 ./redis-cli -p 6380</li>
+</ul>
+<blockquote>
+<p>注意：主机一旦发生增删改操作，那么从机会将数据同步到从机中 从机不能执行写操作</p>
+</blockquote>
+<h3 id="Redis-集群"><a href="#Redis-集群" class="headerlink" title="Redis 集群"></a>Redis 集群</h3><hr>
+<h4 id="redis-cluster-架构图"><a href="#redis-cluster-架构图" class="headerlink" title="redis-cluster 架构图"></a>redis-cluster 架构图</h4><p>[image:2C1166C7-BACE-499D-B965-4F8CE96AB622-1233-000087322EBBF9DC/164a8150227f25b1.jpg]</p>
+<p>架构细节: (1)所有的redis节点彼此互联(PING-PONG机制),内部使用二进制协议优化传输速度和带宽. (2)节点的fail是通过集群中超过半数的节点检测失效时才生效. (3)客户端与redis节点直连,不需要中间proxy层.客户端不需要连接集群所有节点,连接集群中任何一个可用节点即可 (4)redis-cluster把所有的物理节点映射到[0-16383]slot上,cluster 负责维护node&lt;-&gt;slot&lt;-&gt;value Redis 集群中内置了 16384 个哈希槽，当需要在 Redis 集群中放置一个 key-value 时，redis 先对 key 使用 crc16 算法算出一个结果，然后把结果对 16384 求余数，这样每个 key 都会对应一个编号在 0-16383 之间的哈希槽，redis 会根据节点数量大致均等的将哈希槽映射到不同的节点.<br>[image:D18DF8F6-E204-42C6-B705-34B0BB33E4EB-1233-0000873C2716DFD6/164a8150159e9a2c.png]</p>
+<h4 id="redis-cluster-投票-容错"><a href="#redis-cluster-投票-容错" class="headerlink" title="redis-cluster 投票 容错"></a>redis-cluster 投票 容错</h4><p>[image:D82F7E57-1088-4D56-9DDB-6B619AA479D6-1233-0000874364AF2D3D/164a81502f173d74.png]</p>
+<p>(1)集群中所有master参与投票,如果半数以上master节点与其中一个master节点通信超过(cluster-node-timeout),认为该master节点挂掉. (2):什么时候整个集群不可用(cluster_state:fail)?</p>
+<ul>
+<li>如果集群任意master挂掉,且当前master没有slave，则集群进入fail状态。也可以理解成集群的[0-16383]slot映射不完全时进入fail状态。</li>
+<li>如果集群超过半数以上master挂掉，无论是否有slave，集群进入fail状态。</li>
+</ul>
+<h4 id="安装-Ruby"><a href="#安装-Ruby" class="headerlink" title="安装 Ruby"></a>安装 Ruby</h4><p>集群管理工具（redis-trib.rb)是使用 ruby 脚本语言编写的。</p>
+<ul>
+<li>安装 ruby</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ruby</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上传 redis-3.0.0.gem 到 linux</li>
+<li>安装 ruby 和 redis 接口 gem install redis-3.0.0.gem</li>
+<li>将 redis-3.0.0 包下 src 目录中的以下文件拷贝到 redis/redis-cluster/</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/redis/</span><br><span class="line">mkdir redis-cluster</span><br><span class="line"><span class="built_in">cd</span> /root/redis-3.0.0/src/</span><br><span class="line">cp redis-trib.rb /usr/<span class="built_in">local</span>/redis/redis-cluster</span><br></pre></td></tr></table></figure>
+
+<h4 id="搭建集群"><a href="#搭建集群" class="headerlink" title="搭建集群"></a>搭建集群</h4><p>搭建集群最少需要 3 台主机，如果每台主机再配置一台从机的话，则最少需要6台机器。 端口设计：7001-7006</p>
+<ol>
+<li>复制出一个7001机器cp bin ./redis-cluster/7001 -r</li>
+<li>如果存在持久化文件，则删除rm -rf appendonly.aof dump.rdb</li>
+<li>设置集群参数，修改redis.conf<br>[image:91D7C4C7-E9D0-4622-9373-7A55909A7AE8-1233-0000878CC6455B59/164a81503955b32e.png]</li>
+<li>修改端口<br>[image:A5E30DFF-017F-4002-A2AA-CBF616CDDE04-1233-0000879B21515153/164a815042962114.png]</li>
+<li>复制出7002-7006机器<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cp 7001/ 7002-r</span><br><span class="line">cp 7001/ 7003-r</span><br><span class="line">cp 7001/ 7004-r</span><br><span class="line">cp 7001/ 7005-r</span><br><span class="line">cp 7001/ 7006-r</span><br></pre></td></tr></table></figure></li>
+<li>修改7002-7006机器端口</li>
+<li>创建文件 start-all.sh<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> 7001 </span><br><span class="line">./redis-server redis.conf </span><br><span class="line"><span class="built_in">cd</span> .. </span><br><span class="line"><span class="built_in">cd</span> 7002 </span><br><span class="line">./redis-server redis.conf </span><br><span class="line"><span class="built_in">cd</span> .. </span><br><span class="line"><span class="built_in">cd</span> 7003 </span><br><span class="line">./redis-server redis.conf </span><br><span class="line"><span class="built_in">cd</span> .. </span><br><span class="line"><span class="built_in">cd</span> 7004 </span><br><span class="line">./redis-server redis.conf </span><br><span class="line"><span class="built_in">cd</span> .. </span><br><span class="line"><span class="built_in">cd</span> 7005 </span><br><span class="line">./redis-server redis.conf </span><br><span class="line"><span class="built_in">cd</span> .. </span><br><span class="line"><span class="built_in">cd</span> 7006 </span><br><span class="line">./redis-server redis.conf </span><br><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure></li>
+<li>修改文件权限<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u+x start-all.sh</span><br></pre></td></tr></table></figure></li>
+<li>执行文件，启动六台机器<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./start-all.sh</span><br></pre></td></tr></table></figure></li>
+<li>创建集群 ./redis-trib.rb create —replicas 1 192.168.126.128:7001 192.168.126.128:7002 192.168.126.128:7003 192.168.126.128:7004 192.168.126.128:7005 192.168.126.128:7006</li>
+</ol>
+<h4 id="连接集群"><a href="#连接集群" class="headerlink" title="连接集群"></a>连接集群</h4><p>root@ubuntu:/usr/local/redis/redis-cluster/7001# ./redis-cli -p 7001 -c</p>
+<p>-c 指定集群连接</p>
+<h4 id="查看集群信息"><a href="#查看集群信息" class="headerlink" title="查看集群信息"></a>查看集群信息</h4><ul>
+<li>查看集群信息<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">192.168.126.128:7002&gt; cluster info </span><br><span class="line">cluster_state:ok </span><br><span class="line">cluster_slots_assigned:16384 </span><br><span class="line">cluster_slots_ok:16384 </span><br><span class="line">cluster_slots_pfail:0 </span><br><span class="line">cluster_slots_fail:0 </span><br><span class="line">cluster_known_nodes:6 </span><br><span class="line">cluster_size:3 </span><br><span class="line">cluster_current_epoch:6 </span><br><span class="line">cluster_my_epoch:2 </span><br><span class="line">cluster_stats_messages_sent:260 cluster_stats_messages_received:260</span><br></pre></td></tr></table></figure></li>
+<li>查看集群节点<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">192.168.126.128:7002&gt; cluster nodes</span><br><span class="line">3a15e73dacb512745156535ae7f959acf65ae12e 192.168.126.128:7005 slave 23e173cdc0b7673dc28cae70efaabbc41308bfdc 0 1531452321139 5 connected </span><br><span class="line">2a58a53a5b10f7bd91af04128a6ed439d534c0ee 192.168.126.128:7001 master - 0 1531452322145 1 connected 0-5460</span><br><span class="line">d0808388485dd08f1a2ecdfe3d2b213742d0050d 192.168.126.128:7004 slave 2a58a53a5b10f7bd91af04128a6ed439d534c0ee 0 1531452318117 4 connected </span><br><span class="line">23e173cdc0b7673dc28cae70efaabbc41308bfdc 192.168.126.128:7002 myself,master - 0 0 2 connected 5461-10922</span><br><span class="line">2af2312acc56552f9f73470f90d9a51973fc74d3 192.168.126.128:7006 slave 78faf92cfdbd12e1b27b270fb0798e67017f4d0b 0 1531452320132 6 connected </span><br><span class="line">78faf92cfdbd12e1b27b270fb0798e67017f4d0b 192.168.126.128:7007 master - 0 1531452319123 3 connected 10923-16383</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="jedis连接集群"><a href="#jedis连接集群" class="headerlink" title="jedis连接集群"></a>jedis连接集群</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jedisCluster</span><span class="params">()</span> </span>&#123; </span><br><span class="line"><span class="comment">// 创建jedisCluster </span></span><br><span class="line">Set&lt;HostAndPort&gt; nodes = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">nodes.add(<span class="keyword">new</span> HostAndPort(<span class="string">"192.168.242.137"</span>, <span class="number">7001</span>)); nodes.add(<span class="keyword">new</span> HostAndPort(<span class="string">"192.168.242.137"</span>, <span class="number">7002</span>)); nodes.add(<span class="keyword">new</span> HostAndPort(<span class="string">"192.168.242.137"</span>, <span class="number">7003</span>)); nodes.add(<span class="keyword">new</span> HostAndPort(<span class="string">"192.168.242.137"</span>, <span class="number">7004</span>)); nodes.add(<span class="keyword">new</span> HostAndPort(<span class="string">"192.168.242.137"</span>, <span class="number">7005</span>)); nodes.add(<span class="keyword">new</span> HostAndPort(<span class="string">"192.168.242.137"</span>, <span class="number">7006</span>)); nodes.add(<span class="keyword">new</span> HostAndPort(<span class="string">"192.168.242.137"</span>, <span class="number">7007</span>)); JedisCluster cluster = <span class="keyword">new</span> JedisCluster(nodes); cluster.set(<span class="string">"s4"</span>, <span class="string">"444"</span>); </span><br><span class="line">String result = cluster.get(<span class="string">"s4"</span>); </span><br><span class="line">System.out.println(result); </span><br><span class="line">cluster.close(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用-spring"><a href="#使用-spring" class="headerlink" title="使用 spring"></a>使用 spring</h4><p>配置 applicationContext.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 连接池配置 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"jedisPoolConfig"</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.JedisPoolConfig"</span>&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 最大连接数 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxTotal"</span> <span class="attr">value</span>=<span class="string">"30"</span> /&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 最大空闲连接数 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxIdle"</span> <span class="attr">value</span>=<span class="string">"10"</span> /&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 每次释放连接的最大数目 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"numTestsPerEvictionRun"</span> <span class="attr">value</span>=<span class="string">"1024"</span> /&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 释放连接的扫描间隔（毫秒） --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"timeBetweenEvictionRunsMillis"</span> <span class="attr">value</span>=<span class="string">"30000"</span> /&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 连接最小空闲时间 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"minEvictableIdleTimeMillis"</span> <span class="attr">value</span>=<span class="string">"1800000"</span> /&gt;</span> <span class="comment">&lt;!-- 连接空闲多久后释放, 当空闲时间&gt;该值 且 空闲连接&gt;最大空闲连接数 时直接释放 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"softMinEvictableIdleTimeMillis"</span> <span class="attr">value</span>=<span class="string">"10000"</span> /&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 获取连接时的最大等待毫秒数,小于零:阻塞不确定的时间,默认-1 --&gt;</span> <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxWaitMillis"</span> <span class="attr">value</span>=<span class="string">"1500"</span> /&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 在获取连接的时候检查有效性, 默认false --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testOnBorrow"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 在空闲时检查有效性, 默认false --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testWhileIdle"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 连接耗尽时是否阻塞, false报异常,ture阻塞直到超时, 默认true --&gt;</span> <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"blockWhenExhausted"</span> <span class="attr">value</span>=<span class="string">"false"</span> /&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- redis集群 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"jedisCluster"</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.JedisCluster"</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"0"</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">set</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.HostAndPort"</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"0"</span> <span class="attr">value</span>=<span class="string">"192.168.101.3"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"1"</span> <span class="attr">value</span>=<span class="string">"7001"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.HostAndPort"</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"0"</span> <span class="attr">value</span>=<span class="string">"192.168.101.3"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"1"</span> <span class="attr">value</span>=<span class="string">"7002"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.HostAndPort"</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"0"</span> <span class="attr">value</span>=<span class="string">"192.168.101.3"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"1"</span> <span class="attr">value</span>=<span class="string">"7003"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.HostAndPort"</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"0"</span> <span class="attr">value</span>=<span class="string">"192.168.101.3"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"1"</span> <span class="attr">value</span>=<span class="string">"7004"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.HostAndPort"</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"0"</span> <span class="attr">value</span>=<span class="string">"192.168.101.3"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"1"</span> <span class="attr">value</span>=<span class="string">"7005"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.HostAndPort"</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"0"</span> <span class="attr">value</span>=<span class="string">"192.168.101.3"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"1"</span> <span class="attr">value</span>=<span class="string">"7006"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"1"</span> <span class="attr">ref</span>=<span class="string">"jedisPoolConfig"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> ApplicationContext applicationContext; </span><br><span class="line"><span class="meta">@Before</span> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123; </span><br><span class="line">applicationContext = <span class="keyword">new</span> ClassPathXmlApplicationContext( <span class="string">"classpath:applicationContext.xml"</span>); </span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// redis集群 </span></span><br><span class="line"><span class="meta">@Test</span> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testJedisCluster</span><span class="params">()</span> </span>&#123; </span><br><span class="line">JedisCluster jedisCluster = (JedisCluster) applicationContext .getBean(<span class="string">"jedisCluster"</span>); jedisCluster.set(<span class="string">"name"</span>, <span class="string">"zhangsan"</span>); String value = jedisCluster.get(<span class="string">"name"</span>); System.out.println(value); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
