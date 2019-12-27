@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+         Laravel 5.5+ Dingo +Jwt 快速搭建 API系统 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <!-- <div class="avatar ">
+            <img src="/" />
+        </div> -->
+        <div class="name">
+            <i>yuxiangShi</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+         Laravel 5.5+ Dingo +Jwt 快速搭建 API系统
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-12-27 22:45:46</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Laravel" title="Laravel">Laravel</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <blockquote>
+<p><a href="https://blog.51cto.com/12750968/2109459" target="_blank" rel="noopener">Laravel 5.5+ Dingo +Jwt 快速搭建 API系统-Leesin-51CTO博客</a></p>
+</blockquote>
+<ul>
+<li>创建 laravel 项目<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer create-project --prefer-dist laravle/laravel myProject  <span class="string">'5.8.*'</span></span><br></pre></td></tr></table></figure></li>
+<li>安装 Dingo<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"require"</span>:&#123;</span><br><span class="line">        <span class="string">"dingo/api"</span>: <span class="string">"1.0.0-beta8"</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">"minimum-stability"</span>:<span class="string">"dev"</span>,</span><br></pre></td></tr></table></figure>
+执行安装<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer update</span><br></pre></td></tr></table></figure>
+安装jwt<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer require tymon/jwt-auth:dev-develop --prefer-source</span><br></pre></td></tr></table></figure>
+配置项目<br>config/app.php<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"providers"</span>=&gt;[</span><br><span class="line">        ...</span><br><span class="line">        Dingo\Api\Provider\LaravelServiceProvider::class,</span><br><span class="line">        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,</span><br><span class="line">],</span><br><span class="line"><span class="string">'aliases'</span> =&gt; [</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'JWTAuth'</span> =&gt; Tymon\JWTAuth\Facades\JWTAuth::class，</span><br><span class="line">        <span class="string">'JWTFactory'</span> =&gt; Tymon\JWTAuth\Facades\JWTFactory::class</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+发布配置文件 : 终端执行</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">php artisan vendor:publish --provider=<span class="string">"Dingo\Api\Provider\LaravelServiceProvider"</span>  //生成 api.php</span><br><span class="line">php artisan vendor:publish --provider=<span class="string">"Tymon\JWTAuth\Providers\LaravelServiceProvider"</span>  //生成 jwt.php</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line">php artisan vendoer:publish </span><br><span class="line">选择编号即可发布</span><br></pre></td></tr></table></figure>
+<p>生成 JWT_SECRET 写入.env</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan jwt:secret</span><br></pre></td></tr></table></figure>
+<p>config/api.php</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'auth'</span> =&gt; [</span><br><span class="line">    <span class="string">'jwt'</span> =&gt; Dingo\Api\Auth\Provider\JWT::class</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>在 .env 中，把 dingo 配置在最后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">API_STANDARDS_TREE=vnd // 环境</span><br><span class="line">API_SUBTYPE=myapp // 子类型</span><br><span class="line">API_PREFIX=api // 前缀</span><br><span class="line">API_DOMAIN=api.myapp.com //子域名  （前缀和子域名只能存在一个）可选</span><br><span class="line">API_VERSION=v1 // 版本</span><br><span class="line">API_NAME=My API // 名字（使用API Blueprint命令才会用到）</span><br><span class="line">API_CONDITIONAL_REQUEST=<span class="literal">false</span> // 带条件的请求</span><br><span class="line">API_STRICT=<span class="literal">false</span> // Strict模式</span><br><span class="line">API_DEFAULT_FORMAT=json // 响应格式</span><br><span class="line">API_DEBUG=<span class="literal">true</span> // 调试模式</span><br></pre></td></tr></table></figure>
+<p>上面的配置不是都是必要的，可根据实际情况进行选择（上面配置时参考网络配置）,如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">API_STANDARDS_TREE=vnd</span><br><span class="line">API_SUBTYPE=emall</span><br><span class="line">API_PREFIX=api</span><br><span class="line">API_VERSION=v1</span><br></pre></td></tr></table></figure>
+<ul>
+<li>路由：<br>在routers/api.php中新建内容，两个路径分别是注册和登录：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//接管路由</span><br><span class="line"><span class="variable">$api</span> = app(<span class="string">'Dingo\Api\Routing\Router'</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$api</span>-&gt;version(<span class="string">'v1'</span>, <span class="keyword">function</span> (<span class="variable">$api</span>) &#123;</span><br><span class="line">         <span class="variable">$api</span>-&gt;post(<span class="string">'login'</span>, <span class="string">'App\Http\Controllers\Api\Auth\LoginController@login'</span>);</span><br><span class="line">         <span class="variable">$api</span>-&gt;post(<span class="string">'register'</span>, <span class="string">'App\Http\Controllers\Api\Auth\RegisterController@register'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>生成 Controller</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:controller Api/Auth/LoginController</span><br><span class="line">php artisan make:controller Api/Auth/RegisterController</span><br></pre></td></tr></table></figure>
+<ul>
+<li>数据库配置 .env<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DB_CONNECTION=mysql</span><br><span class="line">DB_HOST=127.0.0.1</span><br><span class="line">DB_PORT=3306</span><br><span class="line">DB_DATABASE=51tbk.com</span><br><span class="line">DB_USERNAME=root</span><br><span class="line">DB_PASSWORD=123</span><br></pre></td></tr></table></figure>
+如果不适用laravel 自带的认证系统（php artisan make:auth）会创建模板，可以使用数据迁移<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:model User -m   //生成user 模型的同时，创建数据迁移</span><br><span class="line">单独生成迁移文件</span><br><span class="line">php artisan make:migration create_users_table</span><br></pre></td></tr></table></figure>
+修改内容<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">function</span> up()</span><br><span class="line">&#123;</span><br><span class="line">    Schema::create(<span class="string">'users'</span>, <span class="keyword">function</span> (Blueprint <span class="variable">$table</span>) &#123;</span><br><span class="line">        <span class="variable">$table</span>-&gt;increments(<span class="string">'id'</span>);</span><br><span class="line">        <span class="variable">$table</span>-&gt;string(<span class="string">'name'</span>)-&gt;unique();</span><br><span class="line">        <span class="variable">$table</span>-&gt;string(<span class="string">'email'</span>)-&gt;unique();</span><br><span class="line">        <span class="variable">$table</span>-&gt;string(<span class="string">'password'</span>);</span><br><span class="line">        <span class="variable">$table</span>-&gt;rememberToken();</span><br><span class="line">        <span class="variable">$table</span>-&gt;timestamps();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+生成表<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan migrate</span><br></pre></td></tr></table></figure>
+编辑 Model/Users.php</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Model</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Eloquent</span>\<span class="title">Model</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Foundation</span>\<span class="title">Auth</span>\<span class="title">User</span> <span class="title">as</span> <span class="title">Authenticatable</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Notifications</span>\<span class="title">Notifiable</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Tymon</span>\<span class="title">JWTAuth</span>\<span class="title">Contracts</span>\<span class="title">JWTSubject</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Foundation</span>\<span class="title">Auth</span>\<span class="title">User</span> <span class="title">as</span> <span class="title">Authenticatable</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Users</span> <span class="keyword">extends</span> <span class="title">Authenticatable</span> <span class="keyword">implements</span> <span class="title">JWTSubject</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">Notifiable</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> $fillable = [<span class="string">'name'</span>,<span class="string">'email'</span>,<span class="string">'password'</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> $hidden = [<span class="string">'password'</span>,<span class="string">'remember_token'</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getJWTIdentifier</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;getKey();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getJWTCustomClaims</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注册 RegisterController.php</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">namespace App\Http\Controllers\Api\Auth;</span><br><span class="line"></span><br><span class="line">use App\Http\Controllers\Controller;</span><br><span class="line">use App\User;</span><br><span class="line">use Dingo\Api\Routing\Helpers;</span><br><span class="line">use Illuminate\Foundation\Auth\RegistersUsers;</span><br><span class="line">use Illuminate\Http\Request;</span><br><span class="line">use Illuminate\Support\Facades\Validator;</span><br><span class="line">use Tymon\JWTAuth\Facades\JWTAuth;</span><br><span class="line"></span><br><span class="line">class RegisterController extends Controller &#123;</span><br><span class="line">    use RegistersUsers;</span><br><span class="line">    use Helpers;</span><br><span class="line"></span><br><span class="line">    public <span class="keyword">function</span> register(Request <span class="variable">$request</span>) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="variable">$validator</span> = <span class="variable">$this</span>-&gt;validator(<span class="variable">$request</span>-&gt;all());</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$validator</span>-&gt;fails()) &#123;</span><br><span class="line">            throw new StoreResourceFailedException(<span class="string">"Validation Error"</span>, <span class="variable">$validator</span>-&gt;errors());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="variable">$user</span> = <span class="variable">$this</span>-&gt;create(<span class="variable">$request</span>-&gt;all());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$user</span>-&gt;save()) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="variable">$token</span> = JWTAuth::fromUser(<span class="variable">$user</span>);</span><br><span class="line"></span><br><span class="line">            <span class="built_in">return</span> <span class="variable">$this</span>-&gt;response-&gt;array([</span><br><span class="line">                <span class="string">"token"</span> =&gt; <span class="variable">$token</span>,</span><br><span class="line">                <span class="string">"message"</span> =&gt; <span class="string">"注册成功"</span>,</span><br><span class="line">                <span class="string">"status_code"</span> =&gt; 201,</span><br><span class="line">            ]);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="variable">$this</span>-&gt;response-&gt;error(<span class="string">"User Not Found..."</span>, 404);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    protected <span class="keyword">function</span> validator(array <span class="variable">$data</span>) &#123;</span><br><span class="line">        <span class="built_in">return</span> Validator::make(<span class="variable">$data</span>, [</span><br><span class="line">            <span class="string">'name'</span> =&gt; <span class="string">'required|unique:users'</span>,</span><br><span class="line">            <span class="string">'email'</span> =&gt; <span class="string">'required|email|max:255|unique:users'</span>,</span><br><span class="line">            <span class="string">'password'</span> =&gt; <span class="string">'required|min:6'</span>,</span><br><span class="line">        ]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    protected <span class="keyword">function</span> create(array <span class="variable">$data</span>) &#123;</span><br><span class="line">        <span class="built_in">return</span> User::create([</span><br><span class="line">            <span class="string">'name'</span> =&gt; <span class="variable">$data</span>[<span class="string">'name'</span>],</span><br><span class="line">            <span class="string">'email'</span> =&gt; <span class="variable">$data</span>[<span class="string">'email'</span>],</span><br><span class="line">            <span class="string">'password'</span> =&gt; bcrypt(<span class="variable">$data</span>[<span class="string">'password'</span>]),</span><br><span class="line">        ]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>登录 LoginController.php</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">Http</span>\<span class="title">Controllers</span>\<span class="title">Controller</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">User</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Dingo</span>\<span class="title">Api</span>\<span class="title">Routing</span>\<span class="title">Helpers</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Foundation</span>\<span class="title">Auth</span>\<span class="title">AuthenticatesUsers</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Http</span>\<span class="title">Request</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Facades</span>\<span class="title">Hash</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Symfony</span>\<span class="title">Component</span>\<span class="title">HttpKernel</span>\<span class="title">Exception</span>\<span class="title">UnauthorizedHttpException</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Tymon</span>\<span class="title">JWTAuth</span>\<span class="title">Facades</span>\<span class="title">JWTAuth</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoginController</span> <span class="keyword">extends</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">AuthenticatesUsers</span>;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">Helpers</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span><span class="params">(Request $request)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        $user = User::where(<span class="string">'email'</span>, $request-&gt;email)-&gt;orWhere(<span class="string">'name'</span>, $request-&gt;email)-&gt;first();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ($user &amp;&amp; Hash::check($request-&gt;get(<span class="string">'password'</span>), $user-&gt;password)) &#123;</span><br><span class="line">            $token = JWTAuth::fromUser($user);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;sendLoginResponse($request, $token);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;sendFailedLoginResponse($request);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sendLoginResponse</span><span class="params">(Request $request, $token)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;clearLoginAttempts($request);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;authenticated($token);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">authenticated</span><span class="params">($token)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;response-&gt;array([</span><br><span class="line">            <span class="string">'token'</span> =&gt; $token,</span><br><span class="line">            <span class="string">'status_code'</span> =&gt; <span class="number">200</span>,</span><br><span class="line">            <span class="string">'message'</span> =&gt; <span class="string">'User Authenticated'</span>,</span><br><span class="line">        ]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sendFailedLoginResponse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> UnauthorizedHttpException(<span class="string">"Bad Credentials"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">logout</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;guard()-&gt;logout();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>获取用户信息<br>routes/api.php</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$api-&gt;group([<span class="string">'middleware'</span> =&gt; <span class="string">'api.auth'</span>], <span class="function"><span class="keyword">function</span> <span class="params">($api)</span> </span>&#123;</span><br><span class="line">    $api-&gt;get(<span class="string">'user'</span>, <span class="string">'App\Http\Controllers\Api\UsersController@index'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">php artisan make:controller Api/UsersController</span><br></pre></td></tr></table></figure>
+<p>编辑 UsersController.php</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>每次请求需要加 Header</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Authorization ：Bearer + token</span><br></pre></td></tr></table></figure>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+    <a href="http://www.beian.miit.gov.cn/" target="_blank">京ICP备19053812号</a>
+    </p>        
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

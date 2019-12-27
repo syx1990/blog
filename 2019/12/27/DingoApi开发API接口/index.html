@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        DingoApi开发API接口 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <!-- <div class="avatar ">
+            <img src="/" />
+        </div> -->
+        <div class="name">
+            <i>yuxiangShi</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        DingoApi开发API接口
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-12-27 22:41:28</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Laravel" title="Laravel">Laravel</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <blockquote>
+<p><a href="https://www.jianshu.com/p/cb7da792d91e" target="_blank" rel="noopener">DingoApi - 简书</a></p>
+</blockquote>
+<ul>
+<li>进入项目目录，执行composer安装命令<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer require dingo/api</span><br></pre></td></tr></table></figure></li>
+<li>生成配置文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan vendor:publish --provider=<span class="string">"Dingo\Api\Provider\LaravelServiceProvider"</span></span><br></pre></td></tr></table></figure>
+执行成功后 config目录生成api.php文件。<br>[image:(null)/(null)][image:(null)/(null)]api.php文件的中的配置项可以.env中设置，下面进行基本配置：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">API_STANDARDS_TREE=prs</span><br></pre></td></tr></table></figure>
+<p><em>API_STANDARDS_TREE 有是三个值可选</em><br><em>x 本地开发的或私有环境的</em><br><em>prs 未对外发布的，提供给公司 app，单页应用，桌面应用等</em><br><em>vnd 对外发布的，开放给所有用户</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">API_SUBTYPE=kentcms</span><br></pre></td></tr></table></figure>
+<p><em>API_SUBTYPE是我们项目的简称，全小写。</em><br><em>通过以上两项的设置，可使用Accept 头来访问不同API 版方式如下：</em><br><em>访问 v1 版本</em><br><em>Accept: application/prs.kentcms.v1+json</em><br><em>访问 v2 版本</em><br><em>Accept: application/prs.kentcms.v2+json</em><br>接口访问方式设置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">API_PREFIX=api</span><br></pre></td></tr></table></figure>
+<p>API_PREFIX用来设置api前缀，如aaaxxxccc.com/api方式访问接口。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">API_DOMAIN=api.xxxxxxx.com</span><br></pre></td></tr></table></figure>
+<p>除前缀方式外，还可为api单独指定访问域名，如 api.aaaxxxccc.com方式访问接口。<br><strong>API_PREFIX与API_DOMAIN不可同时指定，二者选其一。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">API_VERSION=v1 //指定默认访问的版本，未指定Accept版本号时访问此版本</span><br><span class="line">API_DEBUG=<span class="literal">true</span> //debug开关</span><br><span class="line">API_STRICT=<span class="literal">false</span> //严格模式需要客户端发送 Accept 头，默认<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>测试效果<br>找到路由目录下的 routes/api.php 文件，laravel默认已经生成了一个路由<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">route::middleware(<span class="string">'auth:api'</span>)-&gt;get(<span class="string">'/user'</span>, <span class="keyword">function</span> (Request <span class="variable">$request</span>) &#123;</span><br><span class="line">    <span class="built_in">return</span> <span class="variable">$request</span>-&gt;user();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+将其修改成DingoApi方式</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$api</span> = app(<span class="string">'Dingo\Api\Routing\Router'</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$api</span>-&gt;version(<span class="string">'v1'</span>, <span class="keyword">function</span>(<span class="variable">$api</span>) &#123;</span><br><span class="line">    <span class="variable">$api</span>-&gt;get(<span class="string">'version'</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> response(<span class="string">'kent v1'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable">$api</span>-&gt;version(<span class="string">'v2'</span>, <span class="keyword">function</span>(<span class="variable">$api</span>) &#123;</span><br><span class="line">    <span class="variable">$api</span>-&gt;get(<span class="string">'version'</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> response(<span class="string">'kent v2'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+    <a href="http://www.beian.miit.gov.cn/" target="_blank">京ICP备19053812号</a>
+    </p>        
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
